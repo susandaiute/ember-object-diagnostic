@@ -7,6 +7,15 @@
 //  -  a unit price
 //  -  a quantity
 //  -  a computed property called `orderPrice`, equal to price times quantity
+
+const Order = Ember.Object.extend({
+  price: 3,
+  quantity: 1,
+  orderPrice: function(){
+   return this.get('price') * this.get('quantity');
+ }
+});
+
 //
 // A Cart should have
 //  -  an `addToCart` method, which adds a given Item to an array
@@ -16,6 +25,21 @@
 //      the `orderPrice` values for everything in the cart); it should be
 //      recalculated any time an Order is added to the cart, removed from the
 //      cart, or modified.
+
+const Cart = Order.extend({
+  init() {
+    this.set('orders', []);
+  },
+  addToCart: function(item){
+    this.get('orders').pushObject(item);
+  },
+  totalPrice: function(){
+    orders.forEach(function(item, index) {
+      
+    });
+ }
+});
+
 //
 // Once you've created the necessary Ember Classes, create a new Cart instance,
 //  and fill that cart up with three new product orders having the following
